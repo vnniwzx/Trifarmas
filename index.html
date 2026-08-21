@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TriFarmas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Menu Lateral -->
+    <aside id="sidebar" class="sidebar">
+      <div class="user-profile">
+        <i class="fa-solid fa-circle-user avatar-icon"></i>
+        <span id="user-display-name">Nome de Usuário</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li onclick="switchScreen('settings-screen')"><i class="fa-solid fa-gear"></i> Configurações do perfil</li>
+        <li onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Sair</li>
+      </ul>
+    </aside>
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- Header com Navegação Dinâmica -->
+    <header id="app-header" class="app-header hidden">
+      <i class="fa-solid fa-circle-user profile-trigger" onclick="toggleSidebar()"></i>
+      <h1 class="brand-title">Tri<span>Farmas</span></h1>
+      <nav class="top-nav">
+        <button id="nav-calendar" onclick="switchScreen('calendar-screen')"><i class="fa-solid fa-calendar-days"></i></button>
+        <button id="nav-prices" onclick="switchScreen('prices-screen')"><i class="fa-solid fa-basket-shopping"></i></button>
+        <button id="nav-home" onclick="switchScreen('home-screen')"><i class="fa-solid fa-house"></i></button>
+      </nav>
+    </header>
+
+    <!-- Tela de Login -->
+    <section id="login-screen" class="screen active">
+      <div class="auth-card">
+        <h2>TriFarmas</h2>
+        <h3>LOGIN</h3>
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" placeholder="Digite seu email" id="login-email">
+        </div>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Digite sua senha" id="login-pass">
+        </div>
+        <p>Não tem uma conta ainda? <a href="#" onclick="switchScreen('register-screen')">Criar uma</a></p>
+        <button class="btn-main" onclick="switchScreen('home-screen')">ENTRAR</button>
+      </div>
+    </section>
+
+    <!-- Tela de Criar Conta -->
+    <section id="register-screen" class="screen">
+      <div class="auth-card">
+        <h2>TriFarmas</h2>
+        <h3>CRIAR CONTA</h3>
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" placeholder="Digite seu email">
+        </div>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Digite sua senha">
+        </div>
+        <p>Já tem uma conta? <a href="#" onclick="switchScreen('login-screen')">Fazer Login</a></p>
+        <button class="btn-main" onclick="switchScreen('login-screen')">CRIAR</button>
+      </div>
+    </section>
+
+    <!-- Tela Principal / Mapa (Botão Filtrar Removido) -->
+    <section id="home-screen" class="screen">
+      <div class="map-card-container">
+        <div class="map-mock">
+          <p><i class="fa-solid fa-location-dot"></i> Mapa</p>
+        </div>
+        <div class="map-sidebar">
+          <h4>Lojas encontradas</h4>
+          <ul class="store-list">
+            <li onclick="openGoogleMaps('Rua São Monsehur 293')">Rua São Monsehur 293</li>
+            <li onclick="openGoogleMaps('Rua Pinto Azevedo 942')">Rua Pinto Azevedo 942</li>
+            <li onclick="openGoogleMaps('Rua Adabrão 400')">Rua Adabrão 400</li>
+            <li onclick="openGoogleMaps('Avenida Pereira Karlos 2438')">Avenida Pereira Karlos 2438</li>
+            <li onclick="openGoogleMaps('Avenida Engenheiro Pastoso 285')">Avenida Engenheiro Pastoso 285</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cestinha de Comparação -->
+    <section id="prices-screen" class="screen">
+      <div class="price-container">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-med" placeholder="Pesquisar medicamento..." onkeyup="filterPrices()">
+        </div>
+        <div class="price-card-inner">
+          <div class="price-filter-header">
+            <span>Filtrar</span>
+            <span class="sort-tag"><i class="fa-solid fa-arrow-down-short-wide"></i> Menor preço</span>
+          </div>
+          <ul class="price-list" id="price-list">
+            <li>
+              <span class="price-value">R$18,90</span>
+              <span class="price-name">Dipirona 500mg</span>
+              <span class="pharmacy-badge pague-menos">Pague Menos</span>
+            </li>
+            <li>
+              <span class="price-value">R$22,50</span>
+              <span class="price-name">Dipirona 500mg</span>
+              <span class="pharmacy-badge drogasil">DROGASIL</span>
+            </li>
+            <li>
+              <span class="price-value">R$35,00</span>
+              <span class="price-name">Dorflex 36 Cprs</span>
+              <span class="pharmacy-badge ultrafarma">ultrafarma</span>
+            </li>
+            <li>
+              <span class="price-value">R$38,90</span>
+              <span class="price-name">Dorflex 36 Cprs</span>
+              <span class="pharmacy-badge sao-paulo">Drogaria São Paulo</span>
+            </li>
+            <li>
+              <span class="price-value">R$67,09</span>
+              <span class="price-name">Amoxilina 500mg</span>
+              <span class="pharmacy-badge drogasil">DROGASIL</span>
+            </li>
+            <li>
+              <span class="price-value">R$68,89</span>
+              <span class="price-name">Amoxilina 500mg</span>
+              <span class="pharmacy-badge raia">Droga Raia</span>
+            </li>
+            <li>
+              <span class="price-value">R$70,19</span>
+              <span class="price-name">Amoxilina 500mg</span>
+              <span class="pharmacy-badge ultrafarma">ultrafarma</span>
+            </li>
+            <li>
+              <span class="price-value">R$85,40</span>
+              <span class="price-name">Ibuprofeno 600mg</span>
+              <span class="pharmacy-badge panvel">Panvel</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tela do Calendário de Lembretes -->
+    <section id="calendar-screen" class="screen">
+      <div class="calendar-card">
+        <h3><i class="fa-solid fa-clock"></i> Lembrete de Remédios</h3>
+        <div class="add-reminder-form">
+          <input type="text" id="med-name" class="form-input" placeholder="Nome do Medicamento">
+          <input type="time" id="med-time" class="form-input">
+          <button class="btn-main" onclick="addReminder()">Agendar Lembrete</button>
+        </div>
+        <ul id="reminder-list" class="reminder-list"></ul>
+      </div>
+    </section>
+
+    <!-- Configurações do Perfil -->
+    <section id="settings-screen" class="screen">
+      <div class="calendar-card">
+        <h3><i class="fa-solid fa-user-gear"></i> Configurações</h3>
+        <div class="add-reminder-form">
+          <label style="font-weight:600; font-size:14px; margin-top:10px;">Nome de usuário:</label>
+          <input type="text" id="input-username" value="Nome de Usuário" class="form-input">
+          <button class="btn-main" onclick="saveUsername()">Salvar Alterações</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Câmera Flutuante -->
+    <div id="camera-fab" class="camera-fab hidden" onclick="openScanner()">
+      <i class="fa-solid fa-camera"></i>
+    </div>
+
+    <!-- Modal Scanner -->
+    <div id="scanner-modal" class="scanner-modal hidden">
+      <p style="font-weight: 700; font-size: 18px;">Escanear Medicamento</p>
+      <p style="font-size: 14px; color: #cbd5e1; margin-top: 6px;">Posicione o código de barras no centro</p>
+      <div class="viewfinder"></div>
+      <button class="btn-sub" onclick="simulateScan()">Escanear e Comparar</button>
+      <button class="btn-close" onclick="closeScanner()">Cancelar</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
