@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,152 +8,179 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-<div class="app-container">
+  <div class="app-container">
 
-  <!-- Splash -->
-  <section id="splash-screen" class="splash-screen">
-    <img src="Trifarmas.jpg" alt="Logo TriFarmas">
-  </section>
+    <!-- Splash -->
+    <section id="splash-screen" class="splash-screen">
+      <img src="Trifarmas.jpg" alt="Logo TriFarmas">
+    </section>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="user-profile">
-      <i class="fa-solid fa-circle-user avatar-icon"></i>
-      <span id="user-display-name">Nome de Usuário</span>
-    </div>
-    <ul class="sidebar-menu">
-      <li onclick="switchScreen('settings-screen'); toggleSidebar()"><i class="fa-solid fa-gear"></i> Configurações do perfil</li>
-      <li onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Sair</li>
-    </ul>
-  </aside>
-  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
-
-  <header id="app-header" class="app-header hidden">
-    <i class="fa-solid fa-circle-user profile-trigger" onclick="toggleSidebar()"></i>
-    <h1 class="brand-title">Tri<span>Farmas</span></h1>
-    <nav class="top-nav">
-      <button id="nav-calendar" onclick="switchScreen('calendar-screen')"><i class="fa-solid fa-calendar-days"></i></button>
-      <button id="nav-prices" onclick="switchScreen('prices-screen')"><i class="fa-solid fa-basket-shopping"></i></button>
-      <button id="nav-home" onclick="switchScreen('home-screen')"><i class="fa-solid fa-house"></i></button>
-    </nav>
-  </header>
-
-  <section id="login-screen" class="screen">
-    <div class="auth-card">
-      <h2>TriFarmas</h2><h3>LOGIN</h3>
-      <div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email" placeholder="Digite seu @gmail.com" id="login-email"></div>
-      <div class="input-group"><i class="fa-solid fa-lock"></i><input type="password" placeholder="Senha com número e caractere especial" id="login-pass"></div>
-      <p id="login-message" class="form-message"></p>
-      <p>Não tem uma conta ainda? <a href="#" onclick="switchScreen('register-screen'); return false;">Criar uma</a></p>
-      <button class="btn-main" onclick="login()">ENTRAR</button>
-    </div>
-  </section>
-
-  <section id="register-screen" class="screen">
-    <div class="auth-card">
-      <h2>TriFarmas</h2><h3>CRIAR CONTA</h3>
-      <div class="input-group"><i class="fa-solid fa-user"></i><input type="text" placeholder="Nome de usuário" id="register-name"></div>
-      <div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email" placeholder="Digite seu @gmail.com" id="register-email"></div>
-      <div class="input-group"><i class="fa-solid fa-lock"></i><input type="password" placeholder="Senha com número e caractere especial" id="register-pass"></div>
-      <p id="register-message" class="form-message"></p>
-      <p>Já tem uma conta? <a href="#" onclick="switchScreen('login-screen'); return false;">Fazer Login</a></p>
-      <button class="btn-main" onclick="register()">CRIAR</button>
-    </div>
-  </section>
-
-  <section id="home-screen" class="screen">
-    <div class="map-card-container">
-      <div class="map-mock"><p><i class="fa-solid fa-location-dot"></i> Mapa</p></div>
-      <div class="map-sidebar">
-        <h4>Lojas encontradas</h4>
-        <ul class="store-list">
-          <li onclick="openGoogleMaps('Rua São Monsehur 293')">Rua São Monsehur 293</li>
-          <li onclick="openGoogleMaps('Rua Pinto Azevedo 942')">Rua Pinto Azevedo 942</li>
-          <li onclick="openGoogleMaps('Rua Adabrão 400')">Rua Adabrão 400</li>
-          <li onclick="openGoogleMaps('Avenida Pereira Karlos 2438')">Avenida Pereira Karlos 2438</li>
-          <li onclick="openGoogleMaps('Avenida Engenheiro Pastoso 285')">Avenida Engenheiro Pastoso 285</li>
-        </ul>
+    <aside id="sidebar" class="sidebar">
+      <div class="user-profile">
+        <i class="fa-solid fa-circle-user avatar-icon"></i>
+        <span id="user-display-name">Nome de Usuário</span>
       </div>
-    </div>
-  </section>
+      <ul class="sidebar-menu">
+        <li onclick="switchScreen('settings-screen'); toggleSidebar()"><i class="fa-solid fa-gear"></i> Configurações do
+          perfil</li>
+        <li onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Sair</li>
+      </ul>
+    </aside>
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-  <section id="prices-screen" class="screen">
-    <div class="price-container">
-      <div class="search-bar">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="search-med" placeholder="Pesquisar medicamento..." autocomplete="off"
-               onfocus="showSuggestions()" oninput="searchMedicines()">
+    <header id="app-header" class="app-header hidden">
+      <i class="fa-solid fa-circle-user profile-trigger" onclick="toggleSidebar()"></i>
+      <h1 class="brand-title">Tri<span>Farmas</span></h1>
+      <nav class="top-nav">
+        <button id="nav-calendar" onclick="switchScreen('calendar-screen')"><i
+            class="fa-solid fa-calendar-days"></i></button>
+        <button id="nav-prices" onclick="switchScreen('prices-screen')"><i
+            class="fa-solid fa-basket-shopping"></i></button>
+        <button id="nav-home" onclick="switchScreen('home-screen')"><i class="fa-solid fa-house"></i></button>
+      </nav>
+    </header>
+
+    <section id="login-screen" class="screen">
+      <div class="auth-card">
+        <h2>TriFarmas</h2>
+        <h3>LOGIN</h3>
+        <div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email"
+            placeholder="Digite seu @gmail.com" id="login-email"></div>
+        <div class="input-group"><i class="fa-solid fa-lock"></i><input type="password"
+            placeholder="Senha com número e caractere especial" id="login-pass"></div>
+        <p id="login-message" class="form-message"></p>
+        <p>Não tem uma conta ainda? <a href="#" onclick="switchScreen('register-screen'); return false;">Criar uma</a>
+        </p>
+        <button class="btn-main" onclick="login()">ENTRAR</button>
       </div>
-      <div id="suggestions" class="suggestions hidden"></div>
+    </section>
 
-      <div class="medicine-types">
-        <button class="type-chip active-type" onclick="setMedicineType('comprimido', this)"><i class="fa-solid fa-tablets"></i> Comprimidos</button>
-        <button class="type-chip" onclick="setMedicineType('liquido', this)"><i class="fa-solid fa-bottle-droplet"></i> Líquidos</button>
-        <button class="type-chip" onclick="setMedicineType('pomada', this)"><i class="fa-solid fa-tube"></i> Pomadas</button>
+    <section id="register-screen" class="screen">
+      <div class="auth-card">
+        <h2>TriFarmas</h2>
+        <h3>CRIAR CONTA</h3>
+        <div class="input-group"><i class="fa-solid fa-user"></i><input type="text" placeholder="Nome de usuário"
+            id="register-name"></div>
+        <div class="input-group"><i class="fa-solid fa-envelope"></i><input type="email"
+            placeholder="Digite seu @gmail.com" id="register-email"></div>
+        <div class="input-group"><i class="fa-solid fa-lock"></i><input type="password"
+            placeholder="Senha com número e caractere especial" id="register-pass"></div>
+        <p id="register-message" class="form-message"></p>
+        <p>Já tem uma conta? <a href="#" onclick="switchScreen('login-screen'); return false;">Fazer Login</a></p>
+        <button class="btn-main" onclick="register()">CRIAR</button>
       </div>
+    </section>
 
-      <div id="selected-medicine-title" class="selected-medicine-title">Pesquise um medicamento</div>
-      <div id="price-card-inner" class="price-card-inner hidden">
-        <div class="price-filter-header"><span>Comparação de preços</span><span class="sort-tag"><i class="fa-solid fa-arrow-down-short-wide"></i> Menor preço</span></div>
-        <ul class="price-list" id="price-list"></ul>
-      </div>
-
-      <div class="pharmacy-placeholders">
-        <h4><i class="fa-solid fa-image"></i> Espaço para ícones das farmácias</h4>
-        <p>Troque os espaços abaixo por imagens ou logos das farmácias que quiser usar como exemplo.</p>
-        <div class="logo-slots">
-          <div class="logo-slot">LOGO 1</div><div class="logo-slot">LOGO 2</div>
-          <div class="logo-slot">LOGO 3</div><div class="logo-slot">LOGO 4</div>
+    <section id="home-screen" class="screen">
+      <div class="map-card-container">
+        <div class="map-mock">
+          <p><i class="fa-solid fa-location-dot"></i> Mapa</p>
+        </div>
+        <div class="map-sidebar">
+          <h4>Lojas encontradas</h4>
+          <ul class="store-list">
+            <li onclick="openGoogleMaps('Rua São Monsehur 293')">Rua São Monsehur 293</li>
+            <li onclick="openGoogleMaps('Rua Pinto Azevedo 942')">Rua Pinto Azevedo 942</li>
+            <li onclick="openGoogleMaps('Rua Adabrão 400')">Rua Adabrão 400</li>
+            <li onclick="openGoogleMaps('Avenida Pereira Karlos 2438')">Avenida Pereira Karlos 2438</li>
+            <li onclick="openGoogleMaps('Avenida Engenheiro Pastoso 285')">Avenida Engenheiro Pastoso 285</li>
+          </ul>
         </div>
       </div>
+    </section>
+
+    <section id="prices-screen" class="screen">
+      <div class="price-container">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-med" placeholder="Pesquisar medicamento..." autocomplete="off"
+            onfocus="showSuggestions()" oninput="searchMedicines()">
+        </div>
+        <div id="suggestions" class="suggestions hidden"></div>
+
+        <div class="medicine-types">
+          <button class="type-chip active-type" onclick="setMedicineType('comprimido', this)"><i
+              class="fa-solid fa-tablets"></i> Comprimidos</button>
+          <button class="type-chip" onclick="setMedicineType('liquido', this)"><i
+              class="fa-solid fa-bottle-droplet"></i> Líquidos</button>
+          <button class="type-chip" onclick="setMedicineType('pomada', this)"><i class="fa-solid fa-tube"></i>
+            Pomadas</button>
+        </div>
+
+        <div id="selected-medicine-title" class="selected-medicine-title">Pesquise um medicamento</div>
+        <div id="price-card-inner" class="price-card-inner hidden">
+          <div class="price-filter-header"><span>Comparação de preços</span><span class="sort-tag"><i
+                class="fa-solid fa-arrow-down-short-wide"></i> Menor preço</span></div>
+          <ul class="price-list" id="price-list"></ul>
+        </div>
+
+        <div class="pharmacy-placeholders">
+          <h4><i class="fa-solid fa-image"></i> Espaço para ícones das farmácias</h4>
+          <p>Troque os espaços abaixo por imagens ou logos das farmácias que quiser usar como exemplo.</p>
+          <div class="logo-slots">
+            <div class="logo-slot">LOGO 1</div>
+            <div class="logo-slot">LOGO 2</div>
+            <div class="logo-slot">LOGO 3</div>
+            <div class="logo-slot">LOGO 4</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar-screen" class="screen">
+      <div class="calendar-card calendar-complete">
+        <div class="calendar-title-row">
+          <div>
+            <h3><i class="fa-solid fa-calendar-check"></i> Lembrete de Remédios</h3>
+            <p>Escolha um dia e agende seus horários.</p>
+          </div>
+          <button class="today-btn" onclick="goToday()">Hoje</button>
+        </div>
+        <div class="calendar-nav">
+          <button onclick="changeMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+          <strong id="calendar-month"></strong>
+          <button onclick="changeMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="weekdays">
+          <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+        </div>
+        <div id="calendar-grid" class="calendar-grid"></div>
+
+        <div class="selected-date-box"><i class="fa-solid fa-calendar-day"></i> <span id="selected-date-label"></span>
+        </div>
+        <div class="add-reminder-form">
+          <input type="text" id="med-name" class="form-input" placeholder="Nome do medicamento">
+          <input type="time" id="med-time" class="form-input">
+          <button class="btn-main" onclick="addReminder()">Agendar lembrete</button>
+        </div>
+        <div class="reminders-header"><strong>Lembretes do dia</strong><span id="reminder-count">0</span></div>
+        <ul id="reminder-list" class="reminder-list"></ul>
+      </div>
+    </section>
+
+    <section id="settings-screen" class="screen">
+      <div class="calendar-card">
+        <h3><i class="fa-solid fa-user-gear"></i> Configurações</h3>
+        <div class="add-reminder-form">
+          <label>Nome de usuário:</label>
+          <input type="text" id="input-username" class="form-input">
+          <button class="btn-main" onclick="saveUsername()">Salvar Alterações</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="camera-fab" class="camera-fab hidden" onclick="openScanner()"><i class="fa-solid fa-camera"></i></div>
+    <div id="scanner-modal" class="scanner-modal hidden">
+      <p class="scanner-heading">Escanear Medicamento</p>
+      <p class="scanner-text">Posicione o código de barras no centro</p>
+      <div class="viewfinder"></div>
+      <button class="btn-sub" onclick="simulateScan()">Escanear e Comparar</button>
+      <button class="btn-close" onclick="closeScanner()">Cancelar</button>
     </div>
-  </section>
-
-  <section id="calendar-screen" class="screen">
-    <div class="calendar-card calendar-complete">
-      <div class="calendar-title-row">
-        <div><h3><i class="fa-solid fa-calendar-check"></i> Lembrete de Remédios</h3><p>Escolha um dia e agende seus horários.</p></div>
-        <button class="today-btn" onclick="goToday()">Hoje</button>
-      </div>
-      <div class="calendar-nav">
-        <button onclick="changeMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-        <strong id="calendar-month"></strong>
-        <button onclick="changeMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-      <div class="weekdays"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
-      <div id="calendar-grid" class="calendar-grid"></div>
-
-      <div class="selected-date-box"><i class="fa-solid fa-calendar-day"></i> <span id="selected-date-label"></span></div>
-      <div class="add-reminder-form">
-        <input type="text" id="med-name" class="form-input" placeholder="Nome do medicamento">
-        <input type="time" id="med-time" class="form-input">
-        <button class="btn-main" onclick="addReminder()">Agendar lembrete</button>
-      </div>
-      <div class="reminders-header"><strong>Lembretes do dia</strong><span id="reminder-count">0</span></div>
-      <ul id="reminder-list" class="reminder-list"></ul>
-    </div>
-  </section>
-
-  <section id="settings-screen" class="screen">
-    <div class="calendar-card">
-      <h3><i class="fa-solid fa-user-gear"></i> Configurações</h3>
-      <div class="add-reminder-form">
-        <label>Nome de usuário:</label>
-        <input type="text" id="input-username" class="form-input">
-        <button class="btn-main" onclick="saveUsername()">Salvar Alterações</button>
-      </div>
-    </div>
-  </section>
-
-  <div id="camera-fab" class="camera-fab hidden" onclick="openScanner()"><i class="fa-solid fa-camera"></i></div>
-  <div id="scanner-modal" class="scanner-modal hidden">
-    <p class="scanner-heading">Escanear Medicamento</p>
-    <p class="scanner-text">Posicione o código de barras no centro</p>
-    <div class="viewfinder"></div>
-    <button class="btn-sub" onclick="simulateScan()">Escanear e Comparar</button>
-    <button class="btn-close" onclick="closeScanner()">Cancelar</button>
   </div>
-</div>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
