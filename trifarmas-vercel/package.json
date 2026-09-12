@@ -1,0 +1,10 @@
+{
+  "name": "trifarmas-vercel",
+  "version": "1.0.0",
+  "description": "Trifarmas — backend adaptado para rodar como funções serverless na Vercel, com banco de dados Turso (compatível com SQLite).",
+  "private": true,
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@libsql/client": "^0.14.0"
+  }
+}
